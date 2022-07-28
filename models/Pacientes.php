@@ -1,9 +1,9 @@
 <?php
     //Archivo que contiene los querys necesarios para realizar las transacciones en las tablas
-    //Clase general para los productos
+    //Clase general para los pacientes
     class Paciente extends Conectar {
 
-        //Método que recupera TODOS los productos de la tabla donde su estado es 1.
+        //Método que recupera TODOS los pacientes de la tabla donde su estado es 1.
         public function get_paciente(){
             $conectar = parent::Conexion();
             parent::set_names();
@@ -24,8 +24,8 @@
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        //Insertar un nuevo producto
-        public function insert_paciente($nombre, $marca, $descripcion, $precio){
+        //Insertar un nuevo pacientes
+        public function insert_paciente($nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "INSERT INTO pacientes (id,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -54,8 +54,8 @@
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        //Actualizar los datos de un producto
-        public function update_paciente($id, $nombre, $marca, $descripcion, $precio){
+        //Actualizar los datos de un paciente
+        public function update_paciente($id, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "UPDATE pacientes SET nombre=?,apellidop=?,apellidom=?,sexo=?,servicio=?,lugarnac=?,fechanac=?,edad=?,calle=?,noext=?,noint=?,cp=?,antiguedad=?,municipio=?,entidadfed=?,colonia=?,seccion=?,ref=?,ubicacion=?,fotocasa=? WHERE id = ?";
@@ -97,24 +97,16 @@
         }
 
         //Borrar físico
-        public function kill_pacientes($id){
+        public function kill_paciente($id){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "DELETE FROM productos WHERE id = ?";
+            $sql = "DELETE FROM pacientes WHERE id = ?";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $id);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
-        //Método que recupera TODOS los productos de la tabla donde su estado es 1.
-        //public function get_sucursales(){
-        //    $conectar = parent::Conexion();
-        //    parent::set_names();
-        //    $sql = "SELECT * FROM sucursales";
-        //    $sql = $conectar -> prepare($sql);
-        //    $sql -> execute();
-        //    return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
-        //}
+
         public function get_pacientes(){
             $conectar = parent::Conexion();
             parent::set_names();
