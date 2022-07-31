@@ -50,11 +50,7 @@
             $datos = $paciente -> kill_paciente($body["id"]);
             echo json_encode("Paciente eliminado completamente");
             break;
-        //case "getSucursales":
-           // $datos = $producto -> get_sucursales();
-            //Una vez recuperados los datos, se les da formato json
-           // echo json_encode($datos); //
-            //break;
+            
         case "getPacientes":
             $datos = $paciente -> get_pacientes();
             //Una vez recuperados los datos, se les da formato json
