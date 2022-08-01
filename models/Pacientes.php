@@ -7,7 +7,7 @@
         public function get_paciente(){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT id,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa FROM pacientes WHERE estado=1";
+            $sql = "SELECT id,noexpediente,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,fotocasa,telefono,escolaridad,estadocivil,religion,numhijos,servmedico,nomservmed,nombrecontactoem,parentesco,telefonopar FROM pacientes WHERE estado=1";
             $sql = $conectar -> prepare($sql);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
@@ -17,7 +17,7 @@
         public function get_paciente_id($id_paciente){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT id,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa FROM pacientes WHERE estado=1 AND id=?";
+            $sql = "SELECT id,noexpediente,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,fotocasa,telefono,escolaridad,estadocivil,religion,numhijos,servmedico,nomservmed,nombrecontactoem,parentesco,telefonopar FROM pacientes WHERE estado=1 AND id=?";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $id_paciente);
             $sql -> execute();
@@ -25,61 +25,83 @@
         }
 
         //Insertar un nuevo pacientes
-        public function insert_paciente($nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa){
+        public function insert_paciente($noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "INSERT INTO pacientes (id,nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO pacientes (id, noexpediente, nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa,telefono,escolaridad,estadocivil,religion,numhijos,servmedico,nomservmed,nombrecontactoem,parentesco,telefonopar) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $sql = $conectar -> prepare($sql);
-            $sql -> bindValue(1, $nombre);
-            $sql -> bindValue(2, $apellidop);
-            $sql -> bindValue(3, $apellidom);
-            $sql -> bindValue(4, $sexo);
-            $sql -> bindValue(5, $servicio);
-            $sql -> bindValue(6, $lugarnac);
-            $sql -> bindValue(7, $fechanac);
-            $sql -> bindValue(8, $edad);
-            $sql -> bindValue(9, $calle);
-            $sql -> bindValue(10, $noext);
-            $sql -> bindValue(11, $noint);
-            $sql -> bindValue(12, $cp);
-            $sql -> bindValue(13, $antiguedad);
-            $sql -> bindValue(14, $municipio);
-            $sql -> bindValue(15, $entidadfed);
-            $sql -> bindValue(16, $colonia);
-            $sql -> bindValue(17, $seccion);
-            $sql -> bindValue(18, $ref);
-            $sql -> bindValue(19, $ubicacion);
-            $sql -> bindValue(20, $fotocasa);
+            $sql -> bindValue(1, $noexpediente);
+            $sql -> bindValue(2, $nombre);
+            $sql -> bindValue(3, $apellidop);
+            $sql -> bindValue(4, $apellidom);
+            $sql -> bindValue(5, $sexo);
+            $sql -> bindValue(6, $servicio);
+            $sql -> bindValue(7, $lugarnac);
+            $sql -> bindValue(8, $fechanac);
+            $sql -> bindValue(9, $edad);
+            $sql -> bindValue(10, $calle);
+            $sql -> bindValue(11, $noext);
+            $sql -> bindValue(12, $noint);
+            $sql -> bindValue(13, $cp);
+            $sql -> bindValue(14, $antiguedad);
+            $sql -> bindValue(15, $municipio);
+            $sql -> bindValue(16, $entidadfed);
+            $sql -> bindValue(17, $colonia);
+            $sql -> bindValue(18, $seccion);
+            $sql -> bindValue(19, $ref);
+            $sql -> bindValue(20, $ubicacion);
+            $sql -> bindValue(21, $fotocasa);
+            $sql -> bindValue(22, $telefono);
+            $sql -> bindValue(23, $escolaridad);
+            $sql -> bindValue(24, $estadocivil);
+            $sql -> bindValue(25, $religion);
+            $sql -> bindValue(26, $numhijos);
+            $sql -> bindValue(27, $servmedico);
+            $sql -> bindValue(28, $nomservmed);
+            $sql -> bindValue(29, $nombrecontactoem);
+            $sql -> bindValue(30, $parentesco);
+            $sql -> bindValue(31, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
         //Actualizar los datos de un paciente
-        public function update_paciente($id, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa){
+        public function update_paciente($id, $noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE pacientes SET nombre=?,apellidop=?,apellidom=?,sexo=?,servicio=?,lugarnac=?,fechanac=?,edad=?,calle=?,noext=?,noint=?,cp=?,antiguedad=?,municipio=?,entidadfed=?,colonia=?,seccion=?,ref=?,ubicacion=?,fotocasa=? WHERE id = ?";
+            $sql = "UPDATE pacientes SET noexpediente=?,nombre=?,apellidop=?,apellidom=?,sexo=?,servicio=?,lugarnac=?,fechanac=?,edad=?,calle=?,noext=?,noint=?,cp=?,antiguedad=?,municipio=?,entidadfed=?,colonia=?,seccion=?,ref=?,fotocasa=?,telefono=?,escolaridad=?,estadocivil=?,religion=?,numhijos=?,servmedico=?,nomservmed=?,nombrecontactoem=?,parentesco=?,telefonopar=?) WHERE id = ?";
             $sql = $conectar -> prepare($sql);
-            $sql -> bindValue(1, $nombre);
-            $sql -> bindValue(2, $apellidop);
-            $sql -> bindValue(3, $apellidom);
-            $sql -> bindValue(4, $sexo);
-            $sql -> bindValue(5, $servicio);
-            $sql -> bindValue(6, $lugarnac);
-            $sql -> bindValue(7, $fechanac);
-            $sql -> bindValue(8, $edad);
-            $sql -> bindValue(9, $calle);
-            $sql -> bindValue(10, $noext);
-            $sql -> bindValue(11, $noint);
-            $sql -> bindValue(12, $cp);
-            $sql -> bindValue(13, $antiguedad);
-            $sql -> bindValue(14, $municipio);
-            $sql -> bindValue(15, $entidadfed);
-            $sql -> bindValue(16, $colonia);
-            $sql -> bindValue(17, $seccion);
-            $sql -> bindValue(18, $ref);
-            $sql -> bindValue(19, $ubicacion);
-            $sql -> bindValue(20, $fotocasa);
+            $sql -> bindValue(1, $noexpediente);
+            $sql -> bindValue(2, $nombre);
+            $sql -> bindValue(3, $apellidop);
+            $sql -> bindValue(4, $apellidom);
+            $sql -> bindValue(5, $sexo);
+            $sql -> bindValue(6, $servicio);
+            $sql -> bindValue(7, $lugarnac);
+            $sql -> bindValue(8, $fechanac);
+            $sql -> bindValue(9, $edad);
+            $sql -> bindValue(10, $calle);
+            $sql -> bindValue(11, $noext);
+            $sql -> bindValue(12, $noint);
+            $sql -> bindValue(13, $cp);
+            $sql -> bindValue(14, $antiguedad);
+            $sql -> bindValue(15, $municipio);
+            $sql -> bindValue(16, $entidadfed);
+            $sql -> bindValue(17, $colonia);
+            $sql -> bindValue(18, $seccion);
+            $sql -> bindValue(19, $ref);
+            $sql -> bindValue(20, $ubicacion);
+            $sql -> bindValue(21, $fotocasa);
+            $sql -> bindValue(22, $telefono);
+            $sql -> bindValue(23, $escolaridad);
+            $sql -> bindValue(24, $estadocivil);
+            $sql -> bindValue(25, $religion);
+            $sql -> bindValue(26, $numhijos);
+            $sql -> bindValue(27, $servmedico);
+            $sql -> bindValue(28, $nomservmed);
+            $sql -> bindValue(29, $nombrecontactoem);
+            $sql -> bindValue(30, $parentesco);
+            $sql -> bindValue(31, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
