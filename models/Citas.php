@@ -88,7 +88,7 @@
         public function get_citas(){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT * FROM citas";
+            $sql = "SELECT hora, tipo, psicologa, nombrep FROM citas";
             $sql = $conectar -> prepare($sql);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
