@@ -28,7 +28,7 @@
         public function insert_cita($dia, $hora, $tipo, $psicologa, $nombrep, $apellidopp, $apellidomp, $id_paciente, $tema){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "INSERT INTO citas (id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            $sql = "INSERT INTO citas (id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $dia);
             $sql -> bindValue(2, $hora);

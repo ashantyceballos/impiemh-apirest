@@ -30,7 +30,7 @@
         case "insert":
             //Datos a insertar en la tabla
             $datos = $cita -> insert_cita($body["dia"],$body["hora"],$body["tipo"],$body["psicologa"],$body["nombrep"],$body["apellidopp"],$body["apellidomp"],$body["id_paciente"],$body["tema"]);
-            echo json_encode("Expediente Ingresado");
+            echo json_encode("Cita Ingresado");
             break;
         //Para actualizar un registro se deben mandar los campos en el json
         case "update":
