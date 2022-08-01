@@ -130,7 +130,7 @@
         public function get_pacientes(){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT * FROM pacientes";
+            $sql = "SELECT noexpediente,nombre,apellidop,apellidom,sexo,telefono FROM pacientes";
             $sql = $conectar -> prepare($sql);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
