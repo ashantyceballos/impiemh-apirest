@@ -25,7 +25,7 @@
         }
 
         //Insertar una nueva cita
-        public function insert_cita($dia, $hora, $tipo, $psicologa, $nombrep, $apellidop, $apellidom, $id_paciente,$tema){
+        public function insert_cita($dia, $hora, $tipo, $psicologa, $nombrep, $apellidopp, $apellidomp, $id_paciente, $tema){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "INSERT INTO citas (id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?,?)";
