@@ -7,7 +7,7 @@
         public function get_cita(){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente FROM citas WHERE estado=1";
+            $sql = "SELECT id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema FROM citas WHERE estado=1";
             $sql = $conectar -> prepare($sql);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
@@ -17,7 +17,7 @@
         public function get_cita_id($id_cita){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "SELECT id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente FROM citas WHERE estado=1 AND id=?";
+            $sql = "SELECT id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema FROM citas WHERE estado=1 AND id=?";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $id_paciente);
             $sql -> execute();
@@ -25,10 +25,10 @@
         }
 
         //Insertar una nueva cita
-        public function insert_cita($dia, $hora, $tipo, $psicologa, $nombrep, $apellidop, $apellidom, $id_paciente){
+        public function insert_cita($dia, $hora, $tipo, $psicologa, $nombrep, $apellidop, $apellidom, $id_paciente,$tema){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "INSERT INTO citas (id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO citas (id,dia,hora,tipo,psicologa,nombrep,apellidopp,apellidomp,id_paciente,tema) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $dia);
             $sql -> bindValue(2, $hora);
@@ -38,15 +38,16 @@
             $sql -> bindValue(6, $apellidopp);
             $sql -> bindValue(7, $apellidomp);
             $sql -> bindValue(8, $id_paciente);
+            $sql -> bindValue(9, $tema);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
         //Actualizar los datos de una cita
-        public function update_cita($id, $dia, $hora, $tipo, $psicologa, $nombrep, $apellidop, $apellidom, $id_paciente){
+        public function update_cita($id, $dia, $hora, $tipo, $psicologa, $nombrep, $apellidop, $apellidom, $id_paciente,$tema){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE citas SET dia=?,hora=?,tipo=?,psicologa=?,nombrep=?,apellidopp=?,apellidomp=?,id_paciente=? WHERE id = ?";
+            $sql = "UPDATE citas SET dia=?,hora=?,tipo=?,psicologa=?,nombrep=?,apellidopp=?,apellidomp=?,id_paciente=?,tema=? WHERE id = ?";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $dia);
             $sql -> bindValue(2, $hora);
@@ -56,6 +57,7 @@
             $sql -> bindValue(6, $apellidopp);
             $sql -> bindValue(7, $apellidomp);
             $sql -> bindValue(8, $id_paciente);
+            $sql -> bindValue(9, $tema);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
