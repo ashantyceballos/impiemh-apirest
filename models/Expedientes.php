@@ -19,7 +19,7 @@
             parent::set_names();
             $sql = "SELECT id,id_paciente,destinatario,remitente,fecha,observacion FROM expedientes WHERE estado=1 AND id=?";
             $sql = $conectar -> prepare($sql);
-            $sql -> bindValue(1, $id_expediente);
+            $sql -> bindValue(1, $id_paciente);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
@@ -28,7 +28,7 @@
         public function insert_expediente($id_paciente, $destinatario, $remitente, $fecha, $observacion){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "INSERT INTO expedientes (id_paciente,destinatario,remitente,fecha,observacion) VALUES (NULL, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO expedientes (id,id_paciente,destinatario,remitente,fecha,observacion) VALUES (NULL, ?, ?, ?, ?, ?)";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $id_paciente);
             $sql -> bindValue(2, $destinatario);
