@@ -25,10 +25,10 @@
         }
 
         //Insertar un nuevo pacientes
-        public function insert_paciente($noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
+        public function insert_paciente($noexpediente, $nombre, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "INSERT INTO pacientes (id, noexpediente, nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,ubicacion,fotocasa,telefono,escolaridad,estadocivil,religion,numhijos,servmedico,nomservmed,nombrecontactoem,parentesco,telefonopar) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO pacientes (id, noexpediente, nombre,apellidop,apellidom,sexo,servicio,lugarnac,fechanac,edad,calle,noext,noint,cp,antiguedad,municipio,entidadfed,colonia,seccion,ref,fotocasa,telefono,escolaridad,estadocivil,religion,numhijos,servmedico,nomservmed,nombrecontactoem,parentesco,telefonopar) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $sql = $conectar -> prepare($sql);
             $sql -> bindValue(1, $noexpediente);
             $sql -> bindValue(2, $nombre);
@@ -65,7 +65,7 @@
         }
 
         //Actualizar los datos de un paciente
-        public function update_paciente($id, $noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
+        public function update_paciente($id, $noexpediente, $nombre, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "UPDATE pacientes SET noexpediente=?,nombre=?,apellidop=?,apellidom=?,sexo=?,servicio=?,lugarnac=?,fechanac=?,edad=?,calle=?,noext=?,noint=?,cp=?,antiguedad=?,municipio=?,entidadfed=?,colonia=?,seccion=?,ref=?,fotocasa=?,telefono=?,escolaridad=?,estadocivil=?,religion=?,numhijos=?,servmedico=?,nomservmed=?,nombrecontactoem=?,parentesco=?,telefonopar=?) WHERE id = ?";
