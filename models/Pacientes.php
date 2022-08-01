@@ -58,7 +58,7 @@
             $sql -> bindValue(26, $servmedico);
             $sql -> bindValue(27, $nomservmed);
             $sql -> bindValue(28, $nombrecontactoem);
-            $sql -> bindValue(39, $parentesco);
+            $sql -> bindValue(29, $parentesco);
             $sql -> bindValue(30, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
@@ -98,7 +98,7 @@
             $sql -> bindValue(26, $servmedico);
             $sql -> bindValue(27, $nomservmed);
             $sql -> bindValue(28, $nombrecontactoem);
-            $sql -> bindValue(39, $parentesco);
+            $sql -> bindValue(29, $parentesco);
             $sql -> bindValue(30, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
