@@ -29,13 +29,13 @@
         //Para insertar un registro se deben mandar los campos en el json
         case "insert":
             //Datos a insertar en la tabla
-            $datos = $cita -> insert_cita($body["dia"],$body["hora"],$body["tipo"],$body["psicologa"],$body["nombrep"],$body["apellidopp"],$body["apellidomp"],$body["id_paciente"],$body["tema"]);
+            $datos = $cita -> insert_cita($body["dia"],$body["hora"],$body["tipo"],$body["psicologa"],$body["nombrep"],$body["id_paciente"],$body["tema"]);
             echo json_encode("Cita Ingresada");
             break;
         //Para actualizar un registro se deben mandar los campos en el json
         case "update":
             //Datos a actualizar en la tabla
-            $datos = $cita -> update_cita($body["dia"],$body["hora"],$body["tipo"],$body["psicologa"],$body["nombrep"],$body["apellidopp"],$body["apellidomp"],$body["id_paciente"],$body["tema"]);
+            $datos = $cita -> update_cita($body["dia"],$body["hora"],$body["tipo"],$body["psicologa"],$body["nombrep"],$body["id_paciente"],$body["tema"]);
             echo json_encode("Cita Actualizado");
             break;
         //Para hacer un borrado lógico de un registro
