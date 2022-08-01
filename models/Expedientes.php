@@ -19,7 +19,7 @@
             parent::set_names();
             $sql = "SELECT id,id_paciente,destinatario,remitente,fecha,observacion FROM expedientes WHERE estado=1 AND id=?";
             $sql = $conectar -> prepare($sql);
-            $sql -> bindValue(1, $id_paciente);
+            $sql -> bindValue(1, $id_expediente);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
