@@ -51,7 +51,7 @@
             echo json_encode("Registro de llamada eliminado completamente");
             break;
             
-        case "getExpedientes":
+        case "getLlamadas":
             $datos = $llamada -> get_llamadas();
             //Una vez recuperados los datos, se les da formato json
             echo json_encode($datos); //
