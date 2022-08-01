@@ -49,24 +49,23 @@
             $sql -> bindValue(17, $colonia);
             $sql -> bindValue(18, $seccion);
             $sql -> bindValue(19, $ref);
-            $sql -> bindValue(20, $ubicacion);
-            $sql -> bindValue(21, $fotocasa);
-            $sql -> bindValue(22, $telefono);
-            $sql -> bindValue(23, $escolaridad);
-            $sql -> bindValue(24, $estadocivil);
-            $sql -> bindValue(25, $religion);
-            $sql -> bindValue(26, $numhijos);
-            $sql -> bindValue(27, $servmedico);
-            $sql -> bindValue(28, $nomservmed);
-            $sql -> bindValue(29, $nombrecontactoem);
-            $sql -> bindValue(30, $parentesco);
-            $sql -> bindValue(31, $telefonopar);
+            $sql -> bindValue(20, $fotocasa);
+            $sql -> bindValue(21, $telefono);
+            $sql -> bindValue(22, $escolaridad);
+            $sql -> bindValue(23, $estadocivil);
+            $sql -> bindValue(24, $religion);
+            $sql -> bindValue(25, $numhijos);
+            $sql -> bindValue(26, $servmedico);
+            $sql -> bindValue(27, $nomservmed);
+            $sql -> bindValue(28, $nombrecontactoem);
+            $sql -> bindValue(39, $parentesco);
+            $sql -> bindValue(30, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
         //Actualizar los datos de un paciente
-        public function update_paciente($id, $noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $ubicacion, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
+        public function update_paciente($id, $noexpediente, $nombre, $apellido, $apellidop, $apellidom, $sexo, $servicio, $lugarnac, $fechanac, $edad, $calle, $noext, $noint, $cp, $antiguedad, $municipio, $entidadfed, $colonia, $seccion, $ref, $fotocasa, $telefono, $escolaridad, $estadocivil, $religion, $numhijos, $servmedico, $nomservmed, $nombrecontactoem, $parentesco, $telefonopar){
             $conectar = parent::Conexion();
             parent::set_names();
             $sql = "UPDATE pacientes SET noexpediente=?,nombre=?,apellidop=?,apellidom=?,sexo=?,servicio=?,lugarnac=?,fechanac=?,edad=?,calle=?,noext=?,noint=?,cp=?,antiguedad=?,municipio=?,entidadfed=?,colonia=?,seccion=?,ref=?,fotocasa=?,telefono=?,escolaridad=?,estadocivil=?,religion=?,numhijos=?,servmedico=?,nomservmed=?,nombrecontactoem=?,parentesco=?,telefonopar=?) WHERE id = ?";
@@ -90,18 +89,17 @@
             $sql -> bindValue(17, $colonia);
             $sql -> bindValue(18, $seccion);
             $sql -> bindValue(19, $ref);
-            $sql -> bindValue(20, $ubicacion);
-            $sql -> bindValue(21, $fotocasa);
-            $sql -> bindValue(22, $telefono);
-            $sql -> bindValue(23, $escolaridad);
-            $sql -> bindValue(24, $estadocivil);
-            $sql -> bindValue(25, $religion);
-            $sql -> bindValue(26, $numhijos);
-            $sql -> bindValue(27, $servmedico);
-            $sql -> bindValue(28, $nomservmed);
-            $sql -> bindValue(29, $nombrecontactoem);
-            $sql -> bindValue(30, $parentesco);
-            $sql -> bindValue(31, $telefonopar);
+            $sql -> bindValue(20, $fotocasa);
+            $sql -> bindValue(21, $telefono);
+            $sql -> bindValue(22, $escolaridad);
+            $sql -> bindValue(23, $estadocivil);
+            $sql -> bindValue(24, $religion);
+            $sql -> bindValue(25, $numhijos);
+            $sql -> bindValue(26, $servmedico);
+            $sql -> bindValue(27, $nomservmed);
+            $sql -> bindValue(28, $nombrecontactoem);
+            $sql -> bindValue(39, $parentesco);
+            $sql -> bindValue(30, $telefonopar);
             $sql -> execute();
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
