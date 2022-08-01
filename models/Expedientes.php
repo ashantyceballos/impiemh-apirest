@@ -49,6 +49,7 @@
             $sql -> bindValue(2, $remitente);
             $sql -> bindValue(3, $fecha);
             $sql -> bindValue(4, $observacion);
+            $sql -> bindValue(5, $id_paciente);
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
