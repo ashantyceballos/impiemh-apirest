@@ -43,13 +43,12 @@
         public function update_expediente($id, $id_paciente, $destinatario, $remitente, $fecha, $observacion){
             $conectar = parent::Conexion();
             parent::set_names();
-            $sql = "UPDATE expedientes SET id_paciente=?,destinatario=?,remitente=?,fecha=?,observacion=? WHERE id = ?";
+            $sql = "UPDATE expedientes SET destinatario=?,remitente=?,fecha=?,observacion=? WHERE id_paciente = ?";
             $sql = $conectar -> prepare($sql);
-            $sql -> bindValue(1, $id_paciente);
-            $sql -> bindValue(2, $destinatario);
-            $sql -> bindValue(3, $remitente);
-            $sql -> bindValue(4, $fecha);
-            $sql -> bindValue(5, $observacion);
+            $sql -> bindValue(1, $destinatario);
+            $sql -> bindValue(2, $remitente);
+            $sql -> bindValue(3, $fecha);
+            $sql -> bindValue(4, $observacion);
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 

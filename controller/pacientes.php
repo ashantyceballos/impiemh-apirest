@@ -29,13 +29,13 @@
         //Para insertar un registro se deben mandar los campos en el json
         case "insert":
             //Datos a insertar en la tabla
-            $datos = $paciente -> insert_paciente($body["nombre"],$body["apellidop"],$body["apellidom"],$body["sexo"],$body["servicio"],$body["lugarnac"],$body["fechanac"],$body["edad"],$body["calle"],$body["noext"],$body["noint"],$body["cp"],$body["antiguedad"],$body["municipio"],$body["entidadfed"],$body["colonia"],$body["seccion"],$body["ref"],$body["ubicacion"],$body["fotocasa"]);
+            $datos = $paciente -> insert_paciente($body["noexpediente"],$body["nombre"],$body["apellidop"],$body["apellidom"],$body["sexo"],$body["servicio"],$body["lugarnac"],$body["fechanac"],$body["edad"],$body["calle"],$body["noext"],$body["noint"],$body["cp"],$body["antiguedad"],$body["municipio"],$body["entidadfed"],$body["colonia"],$body["seccion"],$body["ref"],$body["fotocasa"],$body["telefono"],$body["escolaridad"],$body["estadocivil"],$body["religion"],$body["numhijos"],$body["servmedico"],$body["nomservmed"],$body["nombrecontactoem"],$body["parentesco"],$body["telefonopar"]);
             echo json_encode("Paciente Ingresado");
             break;
         //Para actualizar un registro se deben mandar los campos en el json
         case "update":
             //Datos a actualizar en la tabla
-            $datos = $paciente -> update_paciente($body["nombre"],$body["apellidop"],$body["apellidom"],$body["sexo"],$body["servicio"],$body["lugarnac"],$body["fechanac"],$body["edad"],$body["calle"],$body["noext"],$body["noint"],$body["cp"],$body["antiguedad"],$body["municipio"],$body["entidadfed"],$body["colonia"],$body["seccion"],$body["ref"],$body["ubicacion"],$body["fotocasa"]);
+            $datos = $paciente -> update_paciente($body["noexpediente"],$body["nombre"],$body["apellidop"],$body["apellidom"],$body["sexo"],$body["servicio"],$body["lugarnac"],$body["fechanac"],$body["edad"],$body["calle"],$body["noext"],$body["noint"],$body["cp"],$body["antiguedad"],$body["municipio"],$body["entidadfed"],$body["colonia"],$body["seccion"],$body["ref"],$body["fotocasa"],$body["telefono"],$body["escolaridad"],$body["estadocivil"],$body["religion"],$body["numhijos"],$body["servmedico"],$body["nomservmed"],$body["nombrecontactoem"],$body["parentesco"],$body["telefonopar"]);
             echo json_encode("Paciente Actualizado");
             break;
         //Para hacer un borrado lógico de un  un registro
